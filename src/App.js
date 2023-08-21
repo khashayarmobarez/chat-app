@@ -1,23 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import { Routes, Route} from 'react-router-dom'
+
+// components
+import Login from './components/Login';
+import Chats from './components/Chats';
+import AuthContextProvider from './contexts/AuthContextProvider';
+import './App.css'
+
+
+// first step, install:
+// npm i axios
+// npm i react-router-dom
+// npm i react-chat-engine
+// npm i firebase (in this project the version is 8.7.2)
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AuthContextProvider>
+        <Routes>
+          <Route path='/chats' element={<Chats/> } />
+          <Route path='/login' element={<Login /> } />
+        </Routes>
+      </AuthContextProvider>
     </div>
   );
 }
